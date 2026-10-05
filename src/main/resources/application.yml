@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: spring-ai-lab
+
+  # 密钥与外部连接信息（MongoDB/Redis 连接串、api-key）在
+  # application-dev.yml 中，该文件已加入 .gitignore，不会入库
+  profiles:
+    active: dev
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 12MB
+
+  ai:
+    openai:
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      chat:
+        model: qwen3.6-plus
+        temperature: 0.7
+      embedding:
+        options:
+          model: text-embedding-v4
+    vectorstore:
+      redis:
+        index-name: spring-ai-index
+        prefix: "spring-ai-lab:doc:"
